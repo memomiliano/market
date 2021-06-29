@@ -16,7 +16,13 @@ repositories {
 }
 
 dependencies {
+	implementation( "org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-web")
+
+	runtimeOnly("org.postgresql:postgresql")
+	implementation("org.mapstruct:mapstruct:1.4.2.Final")
+	annotationProcessor("org.mapstruct:mapstruct-processor:1.4.2.Final")
+
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
