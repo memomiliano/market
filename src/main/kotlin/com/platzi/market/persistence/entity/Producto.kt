@@ -9,7 +9,7 @@ class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_producto")
-    var idProducto: Int? = null
+    var idProducto: Int = 0
 
     var nombre: String = ""
 

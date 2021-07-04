@@ -2,8 +2,8 @@ package com.platzi.market.domain
 
 class Category {
 
-    val categoryId: Int = 0
-    val category: String = ""
-    var active: Boolean? = null
+    var categoryId: Int = 0
+    var category: String = ""
+    var active: Boolean = true
 
 }

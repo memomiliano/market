@@ -1,29 +1,46 @@
 package com.platzi.market.persistence.mapper
 
 import com.platzi.market.domain.Product
+import com.platzi.market.persistence.mapper.CategoryMapper
 import com.platzi.market.persistence.entity.Producto
-import org.mapstruct.InheritInverseConfiguration
-import org.mapstruct.Mapper
-import org.mapstruct.Mapping
-import org.mapstruct.Mappings
+import org.mapstruct.*
+import org.springframework.stereotype.Component
 
-@Mapper(componentModel = "spring", uses = [CategoryMapper::class])
-interface ProductMapper {
+class ProductMapper {
 
-    @Mappings(
-            Mapping(source = "idProducto", target = "productId"),
-            Mapping(source = "nombre", target = "name"),
-            Mapping(source = "idCategoria", target = "categoryId"),
-            Mapping(source = "precioVenta", target = "price"),
-            Mapping(source = "cantidadStock", target = "stock"),
-            Mapping(source = "estado", target = "active"),
-            Mapping(source = "categoria", target = "category"),
-    )
-    fun toProduct(producto: Producto): Product
-    fun toProducts(productos: List<Producto>): List<Product>
+    var categoryMapper: CategoryMapper = CategoryMapper()
 
-    @InheritInverseConfiguration
-    @Mapping(target = "codigoBarras", ignore = true)
-    fun toProducto(product: Product): Producto
+    fun toProduct(producto: Producto): Product {
+        var product: Product = Product()
+        product.productId = producto.idProducto
+        product.name = producto.nombre
+        product.categoryId = producto.idCategoria
+        product.price = producto.precioVenta
+        product.stock = producto.cantidadStock
+        product.active = producto.estado
+        product.category = producto.categoria?.let { categoryMapper.toCategory(it) }
+        return product
+    }
+
+    fun toProducts(productos: List<Producto>): List<Product> {
+        var products: MutableList<Product> = mutableListOf()
+        productos.forEach {
+            products.add(this.toProduct(it))
+        }
+        return products as List<Product>
+    }
+
+    fun toProducto(product: Product): Producto {
+        var producto: Producto = Producto()
+        producto.idProducto = product.productId
+        producto.nombre = product.name
+        producto.idCategoria = product.categoryId
+        producto.precioVenta = product.price
+        producto.cantidadStock = product.stock
+        producto.estado = product.active
+        producto.categoria = product.category?.let { categoryMapper.toCategoria(it) }
+        return producto
+    }
+
 
 }

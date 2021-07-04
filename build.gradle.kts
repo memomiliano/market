@@ -5,6 +5,7 @@ plugins {
 	id("io.spring.dependency-management") version "1.0.11.RELEASE"
 	kotlin("jvm") version "1.5.20"
 	kotlin("plugin.spring") version "1.5.20"
+	kotlin("kapt") version "1.5.20"
 }
 
 group = "com.platzi"
@@ -21,7 +22,8 @@ dependencies {
 
 	runtimeOnly("org.postgresql:postgresql")
 	implementation("org.mapstruct:mapstruct:1.4.2.Final")
-	annotationProcessor("org.mapstruct:mapstruct-processor:1.4.2.Final")
+	kapt("org.mapstruct:mapstruct-processor:1.4.2.Final")
+	implementation("org.jetbrains.kotlin:kotlin-reflect:1.5.20")
 
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
