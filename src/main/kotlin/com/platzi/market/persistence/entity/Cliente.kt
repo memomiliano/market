@@ -10,7 +10,7 @@ class Cliente{
     var id: String = ""
     var nombre: String = ""
     var apellidos: String = ""
-    var celular: Int = 0
+    var celular: Long = 0
     var direccion: String = ""
 
     @Column(name = "correo_electronico")

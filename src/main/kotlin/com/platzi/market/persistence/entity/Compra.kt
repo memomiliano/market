@@ -28,7 +28,7 @@ class Compra{
     @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
     var cliente: Cliente? = null
 
-    @OneToMany(mappedBy = "producto")
+    @OneToMany(mappedBy = "compra", cascade = [CascadeType.ALL])
     var productos: List<ComprasProducto>? = null
 
 }

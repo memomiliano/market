@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "com.platzi"
-version = "0.0.1-SNAPSHOT"
+version = "1.0"
 java.sourceCompatibility = JavaVersion.VERSION_11
 
 repositories {
@@ -24,6 +24,10 @@ dependencies {
 	implementation("org.mapstruct:mapstruct:1.4.2.Final")
 	kapt("org.mapstruct:mapstruct-processor:1.4.2.Final")
 	implementation("org.jetbrains.kotlin:kotlin-reflect:1.5.20")
+	implementation("io.springfox:springfox-swagger2:2.9.2")
+	implementation("io.springfox:springfox-swagger-ui:2.9.2")
+	implementation("org.springframework.boot:spring-boot-starter-security:2.5.3")
+	implementation("io.jsonwebtoken:jjwt:0.9.1")
 
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")

@@ -36,7 +36,7 @@ class ProductoRepository: ProductRepository {
 
     override fun getProduct(productId: Int): Product? {
         var producto: Optional<Producto> = productoCrudReposiroty.findById(productId)
-        var product: Product = Product()
+        var product: Product? = null
         producto.ifPresent {
             product =  mapper?.toProduct(it)
         }

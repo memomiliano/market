@@ -3,7 +3,7 @@ package com.platzi.market.persistence.entity
 import javax.persistence.*
 
 @Entity
-@Table(name = "compras_producto")
+@Table(name = "compras_productos")
 //@IdClass(ComprasProductoPK::class)
 class ComprasProducto{
 
@@ -11,13 +11,14 @@ class ComprasProducto{
     //@Id var idProducto: Int = 0
 
     @EmbeddedId
-    var id: ComprasProductoPK? = null
+    var id: ComprasProductoPK? = ComprasProductoPK()
 
     var cantidad: Int = 0
     var total: Double = 0.0
     var estado: Boolean = true
 
     @ManyToOne
+    @MapsId("idCompra")
     @JoinColumn(name = "id_compra", insertable = false, updatable = false)
     var compra: Compra? = null
 
